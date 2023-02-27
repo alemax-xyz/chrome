@@ -1,6 +1,6 @@
 ## Google Chrome docker image
 
-This image is based on official Google Chrome build with Ubuntu Bionic libraries and it is built on top of [clover/base](https://hub.docker.com/r/clover/base/).
+This image is based on official Google Chrome build with debian libraries and it is built on top of [clover/base](https://hub.docker.com/r/clover/base/).
 
 ### Environment variables
 

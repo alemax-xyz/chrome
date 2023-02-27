@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for arg in --headless --disable-gpu "$@" ${CHROME_ARGUMENTS}; do
+for arg in --headless --no-sandbox --disable-gpu "$@" ${CHROME_ARGUMENTS}; do
 	[ -z "${arg}" -o "${uargs#*|${arg%%=*}|}" != "${uargs}" ] && continue
 	uargs="${uargs}|${arg%%=*}|"
 	[ "${arg%%=*}" = "--process-timeout" ] && CHROME_TIMEOUT=${arg#--process-timeout=} && continue
