@@ -28,10 +28,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         unzip \
         gnupg
 
-#RUN export DEBIAN_FRONTEND=noninteractive \
-# && echo "deb [arch=amd64,trusted=yes] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/chrome.list \
-# && apt-get update
-
 RUN mkdir -p /build /rootfs/opt/google
 WORKDIR /build
 RUN apt-get download \
