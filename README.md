@@ -51,3 +51,7 @@ Custom `PUID`/`PGID` could be used to preserve data volume ownership on host.
 | Port                             | Description
 | -------------------------------- | -----------
 | `CHROMEDRIVER_PORT` (`9515`)     | TCP port _chromedriver_ is listening on
+
+### Supported platforms
+
+ * `linux/amd64`;
