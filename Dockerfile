@@ -18,15 +18,12 @@ FROM library/debian:stable-slim AS build
 ENV LANG=C.UTF-8
 
 RUN export DEBIAN_FRONTEND=noninteractive \
- && apt-get update \
- && apt-get install -y \
-        apt-utils
+ && apt-get update
 
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get install -y \
         wget \
-        unzip \
-        gnupg
+        unzip
 
 RUN mkdir -p /build /rootfs/opt/google
 WORKDIR /build
