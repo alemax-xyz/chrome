@@ -7,5 +7,5 @@ for arg in --headless --no-sandbox --disable-gpu "$@" ${CHROME_ARGUMENTS}; do
 	args="${args} ${arg}"
 done
 cmd="/opt/google/chrome/chrome ${args}"
-test "${CHROME_TIMEOUT}" -gt 0 2>/dev/null && cmd="timeout -t ${CHROME_TIMEOUT} ${cmd}"
+[ "${CHROME_TIMEOUT}" -gt 0 ] 2>/dev/null && cmd="timeout -t ${CHROME_TIMEOUT} ${cmd}"
 exec ${cmd}
