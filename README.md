@@ -4,15 +4,29 @@ This image is based on official Google Chrome build with debian libraries and it
 
 ### Environment variables
 
-| Environment                        | Default value                                      | Description
-| ---------------------------------- | -------------------------------------------------- | -----------
-| `CHROMEDRIVER_PORT`                | `9515`                                             | Port to listen on
-| `CHROMEDRIVER_LOG_LEVEL`           | `WARNING`                                          | Set log level: `ALL`, `DEBUG`, `INFO`, `WARNING`, `SEVERE`, `OFF`
-| `CHROMEDRIVER_URL_BASE`            | `/`                                                | Base URL path prefix for commands, e.g. `wd/url`
-| `CHROME_TIMEOUT`                   | not set                                            | Timeout in seconds to autmatically close dangling chrome browsers _*_
-| `CHROME_ARGUMENTS`                 | `--disable-dev-shm-usage --disable-crash-reporter` | Additional (defaul) chrome command line arguments to pass to the `chrome` binary _*_
-| `PUID`                             | `50`                                               | Desired _UID_ of the process owner _**_
-| `PGID`                             | primary group id of the _UID_ user (`50`)          | Desired _GID_ of the process owner _**_
+| Environment | Default value | Description
+| ----------- | ------------- | -----------
+| `CHROMEDRIVER_PORT` | `9515` | port to listen on
+| `CHROMEDRIVER_ADB_PORT` | _not set_ | adb server port
+| `CHROMEDRIVER_URL_BASE` | _not set_ (`/`) | base URL path prefix for commands, e.g. `wd/url`
+| `CHROMEDRIVER_LOG_LEVEL` | _not set_ (`WARNING`) | set log level: `ALL`, `DEBUG`, `INFO`, `WARNING`, `SEVERE`, `OFF`
+| `CHROMEDRIVER_LOG_PATH` | _not set_ | write server log to file instead of stderr (increases log level to `INFO`)
+| `CHROMEDRIVER_APPEND_LOG` | _not set_ | append log file instead of rewriting
+| `CHROMEDRIVER_REPLAYABLE` | _not set_ | (experimental) log verbosely and don't truncate long strings so that the log can be replayed
+| `CHROMEDRIVER_READABLE_TIMESTAMP` | _not set_ | add readable timestamps to log
+| `CHROMEDRIVER_BIDI_MAPPER_PATH` | _not set_ | custom bidi mapper path
+| `CHROMEDRIVER_ALLOWED_IPS` | _not set_ | comma-separated allowlist of remote IP addresses which are allowed to connect to ChromeDriver
+| `CHROMEDRIVER_WHITELISTED_IPS` | `1` | allow connections from any remote
+| `CHROMEDRIVER_ALLOWED_ORIGINS` | `*` | comma-separated allowlist of request origins which are allowed to connect to ChromeDriver (use `*` to allow any host origin)
+| `CHROMEDRIVER_DISABLE_DEV_SHM_USAGE` | `1` | do not use /dev/shm (add this switch if seeing errors related to shared memory)
+| `CHROME_TIMEOUT` | _not set_ | timeout in seconds to autmatically close dangling chrome browsers _*_
+| `CHROME_ARGUMENTS` | `--disable-dev-shm-usage --disable-crash-reporter` | additional (default) chrome command line arguments to pass to the `chrome` binary _*_
+| `PUID` | _not set_ | desired user id of the process owner _**_
+| `PGID` | _not set_ | desired group id of the process pwner (primary group of the `PUID` user) _**_
+| `PUSER` | _not set_ | desired `PUID` user name _**_
+| `PGROUP` | _not set_ | desired `PGID` group name _**_
+| `CRON` | _not set_ (`0`) | will start _cron_ inside the container if set to `1`
+| `TZ` / `TIMEZONE` | _not set_ (`UTC`) | desired container timezone
 
 _*_ `/opt/google/chrome/google-chrome` is a wrapper around `/opt/google/chrome/chrome` binary that will be used by the `chromedriver` to launch the browser.
 It forcibly passes `--headless` and `--disable-gpu` arguments to the `chrome` binary.
@@ -45,6 +59,7 @@ _**_ There are three options to launch `chrome` in the docker:
 By default, `chromedriver` will be running as `chrome` user (`PUID=50`, `PGID=50`).
 To launch under `root` specify `PUID=0`, `PGID=0`.
 Custom `PUID`/`PGID` could be used to preserve data volume ownership on host.
+Custom `PUSER`/`PGROUP` could be used to specify user and group names.
 
 ### Exposed ports
 
