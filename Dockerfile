@@ -78,7 +78,7 @@ RUN rm -rf \
         -e 's,^[[:space:]]*[#].*$,,g' \
         -e '/^[[:space:]]*$/d' \
         etc/gtk-3.0/*.conf \
-         etc/sensors3.conf \
+        etc/sensors3.conf \
  && sed -i -E -z \
         -e 's,<!--([^-]*|-[^-]|--[^>])*-->,,g' \
         -e 's/[[:space:]]+\n/\n/g' \
