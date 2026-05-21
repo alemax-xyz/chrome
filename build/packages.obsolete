@@ -1,0 +1,15 @@
+debconf
+init-system-helpers
+openssl
+perl
+systemd
+dpkg
+procps
+wget
+tar
+xdg-utils
+adwaita-icon-theme
+hicolor-icon-theme
+shared-mime-info
+dconf-gsettings-backend
+libx11-data
