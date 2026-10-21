@@ -46,7 +46,7 @@ RUN apt-sandbox --install --verstamp \
         --required packages.required
 
 # https://googlechromelabs.github.io/chrome-for-testing/#stable
-RUN wget -O chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/147.0.7727.57/linux64/chromedriver-linux64.zip
+RUN wget -O chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/156.0.8078.47/linux64/chromedriver-linux64.zip
 
 WORKDIR /rootfs
 
